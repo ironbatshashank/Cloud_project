@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style type="text/css">
+	thead
+	{
+		font-weight: 800;
+	}
+	h4 {
+		font-size: 1.4em;
+		text-align: center;
+		color: #fff;
+		font-weight: 100;
+		text-transform: capitalize;
+		letter-spacing: 4px;
+		font-family: 'Roboto', sans-serif;
+	}
+	h1 {
+		font-size: 3em;
+		text-align: center;
+		color: #fff;
+		font-weight: 100;
+		text-transform: capitalize;
+		letter-spacing: 4px;
+		font-family: 'Roboto', sans-serif;
+	}
+.dropdown-menu>li
+{ position:relative;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  cursor:pointer;
+}
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    display:none;
+    margin-top: -1px;
+  border-top-left-radius:0;
+  border-bottom-left-radius:0;
+  border-left-color:#fff;
+  box-shadow:none;
+}
+.right-caret:after,.left-caret:after
+ {  content:"";
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    display: inline-block;
+    height: 0;
+    vertical-align: middle;
+    width: 0;
+  margin-left:5px;
+}
+.right-caret:after
+{ border-left: 5px solid #ffaf46;
+}
+.left-caret:after
+{ border-right: 5px solid #ffaf46;
+}
+
+Resources
+  </style>
+</head>
+<body>
+	<!-- main -->
+	{% if message %}
+		<p class=error align="center" style="color:green"><strong>Message:</strong>{{ message }}</p><br>
+	{% endif %}
+	<div class="main-w3layouts wrapper">
+		
+	<nav class="navbar navbar-default" style="width:10%;margin-left:2%;">
+        <div class="">
+          
+          <div >
+            <ul class="nav navbar-nav" >
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">User Profile</a></li>
+                  
+                  <li><a href="#"><button class="btn btn-default">Logout</button></a></li>
+                  
+                  
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+		<h1>Recommendation</h1>
+		<div class="main-agileinfo" style="width:95%">
+			<div class="agileits-top">
+				<!-- Static navbar -->
+      
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Accommodation Details</h4>
+						<div class="container" style="width:100%">
+						  	<table class="table table-bordered">
+							  	<thead>
+								    <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">First</th>
+								      <th scope="col">Last</th>
+								      <th scope="col">Handle</th>
+								    </tr>
+								</thead>
+							  	<tbody>
+								    <tr>
+								      <th scope="row">1</th>
+								      <td>Mark</td>
+								      <td>Otto</td>
+								      <td>@mdo</td>
+								    </tr>
+								    <tr>
+								      	<th scope="row">2</th>
+								      	<td>Jacob</td>
+								      	<td>Thornton</td>
+								      	<td>@fat</td>
+								    </tr>
+								    <tr>
+								      	<th scope="row">3</th>
+								      	<td>Larry</td>
+								      	<td>the Bird</td>
+								      	<td>@twitter</td>
+								    </tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<h4>Job Details</h4>
+						<div class="container" style="width:100%">
+				  			<table class="table table-bordered">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">First</th>
+					      <th scope="col">Last</th>
+					      <th scope="col">Handle</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">1</th>
+					      <td>Mark</td>
+					      <td>Otto</td>
+					      <td>@mdo</td>
+					    </tr>
+					    <tr>
+					      <th scope="row">2</th>
+					      <td>Jacob</td>
+					      <td>Thornton</td>
+					      <td>@fat</td>
+					    </tr>
+					    <tr>
+					      <th scope="row">3</th>
+					      <td>Larry</td>
+					      <td>the Bird</td>
+					      <td>@twitter</td>
+					    </tr>
+					  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	<!-- //main -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript">
+	$(function(){
+  $(".dropdown-menu > li > a.trigger").on("click",function(e){
+    var current=$(this).next();
+    var grandparent=$(this).parent().parent();
+    if($(this).hasClass('left-caret')||$(this).hasClass('right-caret'))
+      $(this).toggleClass('right-caret left-caret');
+    grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+    grandparent.find(".sub-menu:visible").not(current).hide();
+    current.toggle();
+    e.stopPropagation();
+  });
+  $(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
+    var root=$(this).closest('.dropdown');
+    root.find('.left-caret').toggleClass('right-caret left-caret');
+    root.find('.sub-menu:visible').hide();
+  });
+});
+</script>
+</html>
