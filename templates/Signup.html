@@ -14,13 +14,16 @@
 	<div class="main-w3layouts wrapper">
 		<h1>UNISUPPORT</h1><br>
 		<h4>Registration Form</h4>
-
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p class=error style="color:black" align="center"><strong>Message:</strong>{{ message }}
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
-					{% if message %}
-					<p class=error align="center" style="color:red"><strong>Message:</strong>{{ message }}</p><br>
-  					{% endif %}
 					<input class="text" type="text" name="name" placeholder="Enter Name" required=""><br>
 					<input class="text" type="text" name="Address" placeholder="Enter Address" required=""><br>
 					<input class="text" type="text" name="UK_city" placeholder="Enter UK City" required=""><br>
@@ -69,13 +72,6 @@
 						<option value="University of Cambridge">Cambridge</option>
 					</select>
 					<br>
-					<!-- <div class="wthree-text">
-						<label class="anim">
-							<input type="checkbox" class="checkbox" required="">
-							<span>I Agree To The Terms & Conditions</span>
-						</label>
-						<div class="clear"> </div>
-					</div> -->
 					<input type="submit" value="SIGNUP">
 				</form>
 				<p><a href="signin"> Login</a></p>

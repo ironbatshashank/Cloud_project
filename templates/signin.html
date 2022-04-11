@@ -11,11 +11,15 @@
 </head>
 <body>
 	<!-- main -->
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p class=error style="color:black" align="center"><strong>Message:</strong>{{ message }}
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
 	<div class="main-w3layouts wrapper">
 		<h1>Login</h1>
-		{% if message %}
-    		<p class=error align="center" style="color:red"><strong>Message:</strong> {{ message }}</p>
-  		{% endif %}
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
