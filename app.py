@@ -3,6 +3,7 @@ from flask import Flask, render_template, request,redirect,url_for,flash,session
 import mysql.connector
 from requests import get
 from mysql.connector import Error
+from passlib.hash import pbkdf2_sha256
 app = Flask(__name__)
 app.secret_key='1234'
 
@@ -56,7 +57,9 @@ def signup(signup_message=signup_message):
             name = request.form.get('name')
             address = request.form.get('Address')
             uk_city = request.form.get('UK_city')
-            psw = request.form.get('psw')
+            psw = pbkdf2_sha256.encrypt(request.form.get('psw'))
+            print(psw)
+            # psw = request.form.get('psw')
             first_pref = request.form.get('University1')
             sec_pref = request.form.get('University2')
             third_pref = request.form.get('University3')
@@ -89,9 +92,9 @@ def signin():
             return redirect(url_for('signup')) #render_template('signup.html',error=error2)
         elif uname.lower() in mailids:
             cursor.execute('select distinct password from user_details where email="{0}"'.format(uname))
-            actual_password = str(list(cursor.fetchone())[0]).lower()
+            actual_password = list(cursor.fetchone())[0]
             pwd = str(request.form.get('psw')).lower()
-            if actual_password==pwd:
+            if pbkdf2_sha256.verify(request.form.get('psw'),actual_password):
                 flash('Login successful!')
                 session['email'] = uname
                 return redirect(url_for('dashboard'))
